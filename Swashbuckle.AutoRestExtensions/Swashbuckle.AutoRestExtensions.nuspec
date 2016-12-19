@@ -6,7 +6,7 @@
     <title>Swashbuckle.AutoRestExtensions</title>
     <authors>Richard Morris</authors>
     <licenseUrl>http://opensource.org/licenses/BSD-3-Clause</licenseUrl>
-    <projectUrl>https://github.com/domaindrivendev/Swashbuckle</projectUrl>
+    <projectUrl>https://github.com/Alegrowin/Swashbuckle.AutoRestExtensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Adds extensions to Swashbuckle to enlighten AutoRest integration</description>
     <releaseNotes></releaseNotes>

@@ -41,7 +41,7 @@ GlobalConfiguration.Configuration
 
 ## Some explanations
 ### NullableTypeSchemaFilter
-This Filter will apply the x-nullable attributes in the generated JSON, x-nullable is handled poorly in V 0.17.3 of Autorest so this is why I recommend using nightly. If you don't want to use nightly build you may end up having your complex property like `SomeDto.List<Guid>` generated as `SomeDto.List<Guid?>` type become nullable.
+This Filter will apply the x-nullable attributes in the generated JSON, x-nullable is handled poorly in V 0.17.3 of Autorest so this is why I recommend using nightly. If you don't want to use nightly build you may end up having your complex property like `SomeDto.List<Guid>` generated as `SomeDto.List<Guid?>`. See https://github.com/Azure/autorest/pull/1578 for more information about Enumerable being generated with nullable properties.
 
 ### NonNullableAsRequiredSchemaFilter
 This looks at the schema for the x-nullable property and if the property is marked as x-nullable = false, it add the property in the required array which will be validation against null when generated back to C#.

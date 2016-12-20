@@ -4,15 +4,29 @@ namespace Swashbuckle.AutoRestExtensions
 {
     public static class SwaggerDocsConfigExtensions
     {
-        public static void ApplyAutoRestFilters(this SwaggerDocsConfig config, object codeGenerationSettings = null, bool enumTypeModelAsString = false, bool nonNullableAsRequired = false)
+        public static void ApplyAutoRestFilters(this SwaggerDocsConfig config, SwaggerDocsConfigExtensionsConfiguration extensionsConfiguration, object codeGenerationSettings = null)
         {
             if (codeGenerationSettings != null)
+            {
                 config.DocumentFilter(() => new CodeGenerationSettingsDocumentFilter(codeGenerationSettings));
-            config.SchemaFilter(() => new EnumTypeSchemaFilter(enumTypeModelAsString));
-            config.SchemaFilter<TypeFormatSchemaFilter>();
-            config.SchemaFilter<NullableTypeSchemaFilter>();
-            if (nonNullableAsRequired)
-                config.SchemaFilter<NonNullableAsRequiredSchemaFilter>();
+            }
+            if (extensionsConfiguration.ApplyEnumTypeSchemaFilter)
+            {
+                config.SchemaFilter(() => new EnumTypeSchemaFilter(extensionsConfiguration.EnumTypeModelAsString));
+            }
+            if (extensionsConfiguration.ApplyTypeFormatSchemaFilter)
+            {
+                config.SchemaFilter<TypeFormatSchemaFilter>();
+            }
+            if (extensionsConfiguration.ApplyNullableTypeSchemaFilter)
+            {
+                config.SchemaFilter<NullableTypeSchemaFilter>();
+                if (extensionsConfiguration.ApplyNonNullableAsRequiredSchemaFilter)
+                {
+                    config.SchemaFilter<NonNullableAsRequiredSchemaFilter>();
+                }
+            }
+            
             config.ApplyFiltersToAllSchemas();
         }
     }

@@ -74,6 +74,7 @@
     <Compile Include="NullableTypeSchemaFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchemaExtensions.cs" />
+    <Compile Include="SwaggerDocsConfigExtensionsConfiguration.cs" />
     <Compile Include="SwaggerDocsConfigExtensions.cs" />
     <Compile Include="TypeFormatSchemaFilter.cs" />
   </ItemGroup>

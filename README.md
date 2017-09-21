@@ -1,42 +1,38 @@
 # Swashbuckle.AutoRestExtensions
 For C# developers
-### Disclaimer
-I did not code this, @gitfool did @ https://github.com/gitfool/
-
-see : https://github.com/gitfool/Swashbuckle/tree/autorest-extensions
-*** 
 
 # Nuget Package
 See https://www.nuget.org/packages/Swashbuckle.AutoRestExtensions/
 ```
 Install-Package Swashbuckle.AutoRestExtensions
 ```
+Starting version 5.6.0, version of this package will follow SwachBuckle version
 
 # Requirements
-1. Install those packages
-  1. Swashbuckle
-  2. Swashbuckle.AutorestExtensions
-  3. Autorest (you will need any version > 0.17.3 released on 31 oct. 2016. I am using nightly builds, see https://www.myget.org/gallery/autorest)
+Install Autorest
+```
+	npm install -g autorest
+```
 
 # How to use
 ## Swagger.config
 ```C#
 GlobalConfiguration.Configuration
-                .EnableSwagger(
-                    c =>
-                    {
-                        c.SingleApiVersion("v1", "Web Api");
-                        c.ApplyAutoRestFilters(
-                            new SwaggerDocsConfigExtensionsConfiguration()
-                            {
-                                ApplyEnumTypeSchemaFilter = true,
-                                ApplyNullableTypeSchemaFilter = true,
-                                ApplyNonNullableAsRequiredSchemaFilter = true
-                            },
-                            null);
-                        c.DescribeAllEnumsAsStrings(true);
-                    })
-                .EnableSwaggerUi();
+	.EnableSwagger(
+		c =>
+		{
+			c.SingleApiVersion("v1", "Web Api");
+			c.ApplyAutoRestFilters(
+				new SwaggerDocsConfigExtensionsConfiguration()
+				{
+					ApplyEnumTypeSchemaFilter = true,
+					ApplyNullableTypeSchemaFilter = true,
+					ApplyNonNullableAsRequiredSchemaFilter = true
+				},
+				null);
+			c.DescribeAllEnumsAsStrings(true);
+		})
+	.EnableSwaggerUi();
 ```
 
 ## Some explanations
@@ -47,10 +43,16 @@ This Filter will apply the x-nullable attributes in the generated JSON, x-nullab
 This looks at the schema for the x-nullable property and if the property is marked as x-nullable = false, it add the property in the required array which will be validation against null when generated back to C#.
 
 # How to build
-1. Compile the code with Visual Studio
-2. Run the following command in VS console
+1. Compile the code with Visual Studio 2017
+
+# How to pack
+1. Run the following command in VS console
 ```
 Nuget Pack .\Swashbuckle.AutoRestExtensions\Swashbuckle.AutoRestExtensions.csproj -IncludeReferencedProjects
 ```
 
 Feel free to contribute
+
+### Disclaimer
+This work is a fork of @gitfool. See : https://github.com/gitfool/Swashbuckle/tree/autorest-extensions
+*** 

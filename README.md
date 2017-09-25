@@ -1,4 +1,5 @@
 # Swashbuckle.AutoRestExtensions
+[![Build status](https://ci.appveyor.com/api/projects/status/ixj5vywx2217tnye/branch/master?svg=true)](https://ci.appveyor.com/project/Alegrowin/swashbuckle-autorestextensions/branch/master)
 For C# developers
 
 # Nuget Package
